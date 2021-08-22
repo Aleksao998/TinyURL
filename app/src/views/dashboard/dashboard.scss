@@ -1,0 +1,63 @@
+.background-img[data-v-2038cfc3] {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, #013766, #0bc9e3 132.49%);
+  background-color: #013766;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.background-img-top[data-v-2038cfc3] {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 400px;
+    height: 200px;
+}
+
+.background-img-bottom[data-v-2038cfc3] {
+    background-position: 100% 100%;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.header__logo{
+    margin-top: 30px;
+    margin-left: 30px;
+    font-family: Bungee,Impact,sans-serif;
+    font-size: 50px;
+    line-height: 120.5%;
+    color: #fff;
+    letter-spacing: .06em; 
+    font-style: none;
+}
+.header__logo:hover{
+    text-decoration: underline;
+}
+
+.a[data-v-2895f6bc] {
+    fill: #1c3068;
+}
+
+.b[data-v-2895f6bc] {
+    fill: #91b33e;
+    fill-rule: evenodd;
+}
+
+
+
+.card-body{
+    width: 100%;
+    min-height: 350px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
