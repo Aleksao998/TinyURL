@@ -1,6 +1,7 @@
  TinyUrl
 
 #Folder structure
+
   ├── app                     # Front end of application (React - typescript)
   
   
