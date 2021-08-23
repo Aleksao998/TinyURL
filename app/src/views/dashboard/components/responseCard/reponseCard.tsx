@@ -3,13 +3,26 @@ import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import TextField from "@material-ui/core/TextField";
+import axios from "axios";
 
 interface Props {
   setShortUrl: React.Dispatch<React.SetStateAction<string>>;
+  setLongUrl: React.Dispatch<React.SetStateAction<string>>;
+  longUrl: string;
+  shortUrl: string;
 }
 
 const ResponseCard = (props: Props): JSX.Element => {
-  const { setShortUrl } = props;
+  const { setShortUrl, setLongUrl, longUrl, shortUrl } = props;
+
+  const openInNewTab = async (url: string) => {
+    try {
+      const response = await axios.post("http://" + url);
+      window.open(response.data.longurl, "_blank");
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="centerDiv m-t-20" style={{ width: "450px" }}>
       <Card className="card-body" variant="outlined">
@@ -24,7 +37,12 @@ const ResponseCard = (props: Props): JSX.Element => {
           </div>
 
           <div className="row m-t-10">
-            <TextField id="outlined-basic" variant="outlined" multiline />
+            <TextField
+              defaultValue={longUrl}
+              id="outlined-basic"
+              variant="outlined"
+              multiline
+            />
           </div>
 
           <div className="row m-t-10">
@@ -69,13 +87,24 @@ const ResponseCard = (props: Props): JSX.Element => {
           </div>
 
           <div className="row m-t-10">
-            <TextField id="outlined-basic" variant="outlined" multiline />
+            <TextField
+              value={shortUrl}
+              id="outlined-basic"
+              variant="outlined"
+              multiline
+            />
           </div>
 
           <div className="row m-t-10">
             <div className="col-4" style={{ paddingLeft: "0px" }}>
               {" "}
-              <Button variant="outlined" color="primary">
+              <Button
+                variant="outlined"
+                color="primary"
+                onClick={() => {
+                  openInNewTab(shortUrl);
+                }}
+              >
                 {" "}
                 Visit URl
               </Button>
@@ -98,6 +127,7 @@ const ResponseCard = (props: Props): JSX.Element => {
               }}
               onClick={() => {
                 setShortUrl("");
+                setLongUrl("");
               }}
             >
               Shorten another

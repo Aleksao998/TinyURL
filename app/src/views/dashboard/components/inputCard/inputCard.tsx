@@ -3,21 +3,50 @@ import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import TextField from "@material-ui/core/TextField";
+import axios from "axios";
 import { useState } from "react";
 import { BaseDomains } from "../../../../constants/baseDomains";
 
 interface Props {
-  setShortUrl: React.Dispatch<React.SetStateAction<string>>;
+  setShortURL: React.Dispatch<React.SetStateAction<string>>;
+  setLongURL: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const InputCard = (props: Props): JSX.Element => {
-  const { setShortUrl } = props;
-  const [baseUrl, setBaseUrl] = useState("");
+  const { setShortURL , setLongURL} = props;
+  const [baseUrl, setBaseUrl] = useState("localhost:5000");
   const [longUrl, setLongUrl] = useState("");
+  const [error, setError] = useState("");
 
-  const handleSubmit = () => {
-    console.log(baseUrl, longUrl);
-    setShortUrl("test");
+  const handleSubmit = async() => {
+    if(baseUrl === "" || longUrl ===""){
+      setError("Please Enter both URl and base URL")
+      return;
+    }
+    try{
+    const response = await axios
+        .post(
+          `http://localhost:5000/shortening`,
+          {
+            longUrl: longUrl,
+            baseUrl: baseUrl,
+          },
+          {
+            headers: {
+              Authorization: "Bearer " + localStorage.getItem("token"),
+              "Content-Type": "application/json",
+            },
+          }
+        )
+        setError("");
+        console.log(longUrl);
+        setLongURL(longUrl);
+        setShortURL(response.data.shortUrl);
+        
+      }catch(error) {
+        setError("URl or base URL are not correct");
+      }
+
   };
 
   const handleChangeBaseUrl = (event: any) => {
@@ -34,6 +63,7 @@ const InputCard = (props: Props): JSX.Element => {
     <div className="centerDiv m-t-20" style={{ width: "450px" }}>
       <Card className="card-body" variant="outlined">
         <CardContent>
+          {error!=="" ? (<p style={{color:"#D0342C"}}>{error}</p>):null}
           <div className="row">
             <div className="col-1">
               <svg

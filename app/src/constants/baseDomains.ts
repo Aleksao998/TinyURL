@@ -1,1 +1,1 @@
-export const BaseDomains: string[] = ["tinyurl.com", "roft.lol", "tiny.one"];
+export const BaseDomains: string[] = ["localhost:5000"];

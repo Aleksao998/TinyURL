@@ -6,14 +6,14 @@ import ResponseCard from "./components/responseCard/reponseCard";
 
 const Dashboard = (): JSX.Element => {
   const [shortUrl, setShortUrl] = useState("");
-
+  const [longUrl, setLongUrl] = useState("");
   return (
     <div className="container-fluid">
       <div className="row">
         <Logo />
       </div>
       <div className="row">
-        {shortUrl==="" ? <InputCard setShortUrl={setShortUrl}/> : <ResponseCard setShortUrl={setShortUrl}/>}
+        {shortUrl==="" ? <InputCard setShortURL={setShortUrl}  setLongURL={setLongUrl} /> : <ResponseCard setShortUrl={setShortUrl} setLongUrl={setLongUrl} longUrl={longUrl} shortUrl={shortUrl}/>}
         
       </div>
 
