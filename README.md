@@ -2,9 +2,14 @@
 
 #Folder structure
   ├── app                     # Front end of application (React - typescript)
+  
+  
   ├── server                  # Application server (Node.js - typescript - Express)
+  
   ├── screenSHots             # Screen shots of application
+  
   ├── videoShots              # Video trailer of application
+  
 
 #How to run?
   1. To start server cd server -> npm start
