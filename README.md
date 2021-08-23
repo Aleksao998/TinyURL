@@ -28,8 +28,31 @@
     -> Get method (localhost:5000/:visitedDomainsSorted) retrives two array with url/domains and count in last 24h
 
   
-  #Description
-  1. What is a URL shortening system?
-     -> Url shortening system is used for creating short urls from long URLs. When someone access short url, system will redirect him to long url. THis is usefull for many
-        reasons. It Saves a lot of space and users will have less misstypes. More important feature is that using this system we can easily count trafic both on speciifc url
-        and even domain/subdomain
+#Description
+1. What is a URL shortening system?
+   -> Url shortening system is used for creating short urls from long URLs. When someone access short url, system will redirect him to long url. THis is usefull for many
+      reasons. It Saves a lot of space and users will have less misstypes. More important feature is that using this system we can easily count trafic both on speciifc url
+      and even domain/subdomain
+
+2. What's the main value? Who needs such a system and why?
+   -> As i said in previous question there are great number of advantages to use url shortening systems:
+      It improves search engine ranking
+      Shorter Urls make sharing Easier
+      Tracking capabilities
+      More legitimacy
+      ....
+3. Describe The main mechanism of work and system components.
+   -> User need to input Url which he wants to shorten, and he needs to choose base URl (url of server which will generate/redirect short url).
+      When users sends requred data to server, server will take long url and generate unique url code. It will concate baseUrl + urlCode and create full shortUrl.
+      With this short url user can access his long url using redirection. 
+
+4. What do you think are the imain challenges in implementing and running the system.
+    -> This system will be read-heavy. Every request will go into our server. Besides read-heavy difficulty we will have a lot recors to our database. 
+       There are a lot of ways we can improve out system. BEcause we can anticipate storing milions of recors without any realtionship we can use NoSql database for easier                scaling, We can cache url that are frequentl used. If we go really big we can implement Load Balancer for balancing requests. 
+         
+ 5. Try to suggest some ideas for advanced features 
+    -> We can implement expiration date if specified for shortUrl. This user can limit usega of url for some period and we can purge regords from databse when date expires and
+       someone tries to access.
+    -> We can create advcance analitics for every request. Which we could use for geotargeting, devicetargeting...
+    -> Private URl -> user can specify which ip addresses can access url 
+    -> Connect custom domain
