@@ -1,7 +1,7 @@
 import { useState } from "react";
-import DashboardBackGround from "./components/background/background";
+import DashboardBackGround from "../../components/background/background";
+import Logo from "../../components/logo/logo";
 import InputCard from "./components/inputCard/inputCard";
-import Logo from "./components/logo/logo";
 import ResponseCard from "./components/responseCard/reponseCard";
 
 const Dashboard = (): JSX.Element => {

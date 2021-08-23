@@ -2,6 +2,11 @@ const express = require("express");
 const router = express.Router();
 const routesController = require("../controllers/routes");
 
+router.get(
+  "/visitedDomainsSorted",
+  routesController.visitedDomainsSorted
+);
+
 router.post(
   "/shortening",
   routesController.getShortUrl
@@ -16,6 +21,8 @@ router.post(
   "/:urlCode",
   routesController.getLongUrlData
 );
+
+
 
 
 
